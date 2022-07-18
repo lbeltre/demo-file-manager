@@ -8,14 +8,15 @@ namespace Dfm.Core.Models
 {
     public class FolderItemInfo : ItemInfo
     {
-        public List<FileInfo> Contents { get; } = new List<FileInfo>();
+        public List<FileItemInfo> Files { get; } = new ();
+        public List<FolderItemInfo> Folders { get; } = new();
 
 
         public FolderItemInfo(string name) : base(name) { }
 
         public override string GetSize()
         {
-            throw new NotImplementedException();
+            return $"Content: {Files.Count} | Size: {Files.Sum(s => s.Size)}";
         }
     }
 }

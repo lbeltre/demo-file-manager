@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace Dfm.Core.Models
 {
-    public class FileIitemInfo : ItemInfo
+    public class FileItemInfo : ItemInfo
     {
-        public FileIitemInfo(string name) : base(name) { }
+        public FileItemInfo(string name) : base(name) { }
 
+        public long Size { get; set; }
         public DateTime Modified { get; set; }
 
         public override string GetSize()
         {
-            throw new NotImplementedException();
+            return $"Size {Size}";
         }
     }
 }

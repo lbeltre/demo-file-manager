@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dfm.Web", "Dfm.Web\Dfm.Web.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dfm.Core", "Dfm.Core\Dfm.Core.csproj", "{BA2D5FE4-5636-45D3-9A00-1B70214D9F1A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dfm.Tests", "Dfm.Tests\Dfm.Tests.csproj", "{807CD2DF-EFB2-46A6-8AC6-B4E203D53284}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{BA2D5FE4-5636-45D3-9A00-1B70214D9F1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA2D5FE4-5636-45D3-9A00-1B70214D9F1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA2D5FE4-5636-45D3-9A00-1B70214D9F1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{807CD2DF-EFB2-46A6-8AC6-B4E203D53284}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{807CD2DF-EFB2-46A6-8AC6-B4E203D53284}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{807CD2DF-EFB2-46A6-8AC6-B4E203D53284}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{807CD2DF-EFB2-46A6-8AC6-B4E203D53284}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
