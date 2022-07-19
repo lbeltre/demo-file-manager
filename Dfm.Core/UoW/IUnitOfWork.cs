@@ -13,5 +13,7 @@ namespace Dfm.Core.UoW
         void CopyFolder(FolderItemInfo from, FolderItemInfo to);
         void RemoveFolder(FolderItemInfo item);
         void MoveFolder(FolderItemInfo from, FolderItemInfo to);
+
+        FolderItemInfo GetTree(string path);
     }
 }
