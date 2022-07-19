@@ -20,8 +20,8 @@ namespace Dfm.Core.Commands
 
         public void Execute()
         {
-            if (Directory.Exists(folder.FullPath))
-                throw new ValidationException($"Folder alredy exists");
+            if (!Directory.Exists(folder.FullPath))
+                throw new ValidationException($"Folder doesn't exists");
 
             Directory.Delete(folder.FullPath);            
         }
