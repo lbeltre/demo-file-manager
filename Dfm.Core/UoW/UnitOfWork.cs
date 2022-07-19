@@ -19,6 +19,9 @@ namespace Dfm.Core.UoW
         }
 
         public void CreateFolder(FolderItemInfo item) => commandManager.Invoke(new CreateFolderCommand(item));
+        public void CopyFolder(FolderItemInfo from, FolderItemInfo to) => commandManager.Invoke(new CopyFolderCommand(from, to));
+        public void RemoveFolder(FolderItemInfo item) => commandManager.Invoke(new RemoveFolderCommand(item));
+        public void MoveFolder(FolderItemInfo from, FolderItemInfo to) => commandManager.Invoke(new MoveFolderCommand(from, to));
 
 
         public FolderItemInfo GetTree(string path)
