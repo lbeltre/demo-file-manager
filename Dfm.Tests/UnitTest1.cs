@@ -10,10 +10,10 @@ namespace Dfm.Tests
         [Fact]
         public void Test1()
         {
-            var source = new FolderItemInfo(@"C:\temp");
+            var source = new FolderItemInfo(@"C:\GitHub");
             var destination = new FolderItemInfo(@"C:\temp-test");
 
-            var cmd = new CopyFolderCommand(source, destination);
+            var cmd = new MoveFolderCommand(source, destination);
             cmd.Execute();
 
 
