@@ -1,3 +1,6 @@
+using Dfm.Core.Code;
+using Dfm.Core.Commands;
+using Dfm.Core.Models;
 using Dfm.Core.UoW;
 
 namespace Dfm.Tests
@@ -7,9 +10,14 @@ namespace Dfm.Tests
         [Fact]
         public void Test1()
         {
-            var uow = new UnitOfWork(new Core.Commands.CommandManager());
+            var source = new FolderItemInfo(@"C:\temp");
+            var destination = new FolderItemInfo(@"C:\temp-test");
 
-            var ddd = uow.GetTree(@"C:\temp");
+            var cmd = new CopyFolderCommand(source, destination);
+            cmd.Execute();
+
+
+            Assert.True(true);
         }
     }
 }
