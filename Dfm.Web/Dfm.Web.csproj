@@ -10,4 +10,8 @@
     <ProjectReference Include="..\Dfm.Core\Dfm.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\lib\" />
+  </ItemGroup>
+
 </Project>
