@@ -9,11 +9,11 @@ namespace Dfm.Web.Controllers
     public class HomeController : Controller
     {
         private const string contentRoot = "content_root";
+        private const string identifierTreeRoot = "#";
 
         private readonly ILogger<HomeController> _logger;
         private readonly IWebHostEnvironment webHostEnvironment;
         private readonly IUnitOfWork unitOfWork;
-        private const string identifierTreeRoot = "#";
 
         public string RootPath => Path.Combine(webHostEnvironment.WebRootPath, contentRoot);
 
@@ -66,7 +66,7 @@ namespace Dfm.Web.Controllers
          * implement crud txt in core
          * implement show node UI
          * implement crud UI
-         * implemente adapter tranform model ui
+         
          */
     }
 }

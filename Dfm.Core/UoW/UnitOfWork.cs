@@ -38,10 +38,9 @@ namespace Dfm.Core.UoW
                 else
                 {
                     var file = new FileInfo(item);
-                    var fileItem = new FileItemInfo(file.Name)
+                    var fileItem = new FileItemInfo(file.Name, file.Length)
                     {
                         Location = file?.DirectoryName ?? string.Empty,
-                        Size = file.Length,
                         Created = file.CreationTime,
                         Modified = file.LastWriteTime
                     };

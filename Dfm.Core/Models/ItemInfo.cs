@@ -12,7 +12,7 @@
 
         public string Name { get; set; }
         public string Location { get; set; }
-        public string FullPath => String.IsNullOrEmpty(Location) ? Name : $@"{Location}\{Name}";
+        public virtual string FullPath => String.IsNullOrEmpty(Location) ? Name : $@"{Location}\{Name}";
         public DateTime Created { get; set; }
 
         public abstract string GetSize();
