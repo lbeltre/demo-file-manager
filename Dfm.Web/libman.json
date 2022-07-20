@@ -1,11 +1,21 @@
 {
   "version": "1.0",
   "defaultProvider": "cdnjs",
-  "libraries": [   
+  "libraries": [
     {
       "provider": "cdnjs",
       "library": "jstree@3.3.12",
       "destination": "wwwroot/lib/jstree/"
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "bootstrap@5.2.0",
+      "destination": "wwwroot/lib/bootstrap/"
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "jquery@3.6.0",
+      "destination": "wwwroot/lib/jquery/"
     }
   ]
 }

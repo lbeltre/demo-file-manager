@@ -57,7 +57,8 @@ namespace Dfm.Web.Controllers
 
                 return Json(root);
             }
-            else{
+            else
+            {
 
                 var data = TreeViewModel.Transform(models.Folders, RootPath);
                 return Json(data);
@@ -77,5 +78,15 @@ namespace Dfm.Web.Controllers
             if (!Directory.Exists(RootPath))
                 Directory.CreateDirectory(RootPath);
         }
+
+
+        //TODO
+        /*
+         * get only txt
+         * implement crud txt in core
+         * implement show node UI
+         * implement crud UI
+         * implemente adapter tranform model ui
+         */
     }
 }

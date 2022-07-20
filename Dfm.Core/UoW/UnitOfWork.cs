@@ -1,11 +1,6 @@
 ﻿using Dfm.Core.Commands;
 using Dfm.Core.Models;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Dfm.Core.UoW
 {
@@ -53,7 +48,7 @@ namespace Dfm.Core.UoW
 
                     folder.Files.Add(fileItem);
                 }
-            }                      
+            }
 
             return folder;
         }

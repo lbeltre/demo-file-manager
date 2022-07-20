@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Dfm.Core.Models
+﻿namespace Dfm.Core.Models
 {
     public abstract class ItemInfo
     {
@@ -13,7 +7,7 @@ namespace Dfm.Core.Models
             Name = Path.GetFileNameWithoutExtension(name);
 
             var directory = Path.GetDirectoryName(name);
-            Location = directory.EndsWith(@"\") ? directory.Remove(directory.Length -1) : directory;
+            Location = directory.EndsWith(@"\") ? directory.Remove(directory.Length - 1) : directory;
         }
 
         public string Name { get; set; }

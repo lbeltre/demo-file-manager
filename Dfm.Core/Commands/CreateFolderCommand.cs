@@ -1,10 +1,5 @@
 ﻿using Dfm.Core.Models;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Dfm.Core.Commands
 {
@@ -23,7 +18,7 @@ namespace Dfm.Core.Commands
             if (Directory.Exists(folder.FullPath))
                 throw new ValidationException($"Folder alredy exists");
 
-            Directory.CreateDirectory(folder.FullPath);            
+            Directory.CreateDirectory(folder.FullPath);
         }
     }
 }

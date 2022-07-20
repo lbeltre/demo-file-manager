@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Dfm.Core.Models
+﻿namespace Dfm.Core.Models
 {
     public class FolderItemInfo : ItemInfo
     {
-        public List<FileItemInfo> Files { get; } = new ();
+        public List<FileItemInfo> Files { get; } = new();
         public List<FolderItemInfo> Folders { get; } = new();
 
 

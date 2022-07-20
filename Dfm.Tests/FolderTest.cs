@@ -1,7 +1,5 @@
-using Dfm.Core.Code;
 using Dfm.Core.Commands;
 using Dfm.Core.Models;
-using Dfm.Core.UoW;
 
 namespace Dfm.Tests
 {
@@ -29,10 +27,10 @@ namespace Dfm.Tests
             Directory.CreateDirectory(directory);
 
             var file = Path.Combine(directory, $"{Guid.NewGuid()}.txt");
-            
+
             using var streamWriter = File.CreateText(file);
             streamWriter.WriteLine(Guid.NewGuid());
-            streamWriter.WriteLine(DateTime.Now.ToLongTimeString());    
+            streamWriter.WriteLine(DateTime.Now.ToLongTimeString());
             streamWriter.Flush();
 
             var directoryTo = $@"C:\temp-test_to_{Guid.NewGuid()}";
