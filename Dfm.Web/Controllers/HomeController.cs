@@ -25,18 +25,44 @@ namespace Dfm.Web.Controllers
         public IActionResult Index()
         {
             CreateRootSpace();
-            var root = unitOfWork.GetTree(RootPath);
-            return View(root);
+            return View();
         }
 
         public IActionResult FolderCreate(string name)
         {
-
-
             return View("Index");
         }
 
+        public IActionResult GetData(string id)
+        {
+            var search = id == "#" ? RootPath : $"{RootPath}{id}";
+            var models = unitOfWork.GetTree(search);
 
+            if (id == "#")
+            {
+                var root = new List<TreeModel<List<TreeModel<bool>>>>
+                {
+                    new TreeModel<List<TreeModel<bool>>>
+                    {
+                        Id = "",
+                        Text = models.Name,
+                        State = new State
+                        {
+                            Opened = true,
+                            Disabled = true
+                        },
+                        Children = TreeViewModel.Transform(models.Folders, RootPath)
+                    }
+                };
+
+                return Json(root);
+            }
+            else{
+
+                var data = TreeViewModel.Transform(models.Folders, RootPath);
+                return Json(data);
+            }
+        }
 
 
 
