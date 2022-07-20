@@ -1,4 +1,5 @@
 ﻿using Dfm.Core.UoW;
+using Dfm.Web.Code;
 using Dfm.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -12,6 +13,7 @@ namespace Dfm.Web.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IWebHostEnvironment webHostEnvironment;
         private readonly IUnitOfWork unitOfWork;
+        private const string identifierTreeRoot = "#";
 
         public string RootPath => Path.Combine(webHostEnvironment.WebRootPath, contentRoot);
 
@@ -35,34 +37,12 @@ namespace Dfm.Web.Controllers
 
         public IActionResult GetData(string id)
         {
-            var search = id == "#" ? RootPath : $"{RootPath}{id}";
+            var isRoot = id == identifierTreeRoot;
+            var search = isRoot ? RootPath : $"{RootPath}{id}";
             var models = unitOfWork.GetTree(search);
 
-            if (id == "#")
-            {
-                var root = new List<TreeModel<List<TreeModel<bool>>>>
-                {
-                    new TreeModel<List<TreeModel<bool>>>
-                    {
-                        Id = "",
-                        Text = models.Name,
-                        State = new State
-                        {
-                            Opened = true,
-                            Disabled = true
-                        },
-                        Children = TreeViewModel.Transform(models.Folders, RootPath)
-                    }
-                };
-
-                return Json(root);
-            }
-            else
-            {
-
-                var data = TreeViewModel.Transform(models.Folders, RootPath);
-                return Json(data);
-            }
+            ITreeClientAdapter adapter = new TreeClientAdapter(models, RootPath);
+            return Json(isRoot ? adapter.GetRoot() : adapter.GetChilds());
         }
 
 
