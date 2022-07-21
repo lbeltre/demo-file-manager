@@ -45,6 +45,17 @@ namespace Dfm.Web.Controllers
             return Json(isRoot ? adapter.GetRoot() : adapter.GetChilds());
         }
 
+        public IActionResult GetContent(string id)
+        {
+            var isRoot = id == identifierTreeRoot;
+            var search = isRoot ? RootPath : $"{RootPath}{id}";
+            var models = unitOfWork.GetTree(search);
+
+            ITreeClientAdapter adapter = new TreeClientAdapter(models, RootPath);
+            return Json(adapter.GetChilds(true));
+        }
+
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -64,9 +75,7 @@ namespace Dfm.Web.Controllers
         /*
          * get only txt
          * implement crud txt in core
-         * implement show node UI
-         * implement crud UI
-         
+         * implement crud UI         
          */
     }
 }

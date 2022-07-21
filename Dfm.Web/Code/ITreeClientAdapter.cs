@@ -6,7 +6,7 @@ namespace Dfm.Web.Code
     internal interface ITreeClientAdapter
     {
         TreeModel<List<TreeModel<bool>>>[] GetRoot();
-        List<TreeModel<bool>> GetChilds();
+        List<TreeModel<bool>> GetChilds(bool all = false);
     }
 
     public class TreeClientAdapter : ITreeClientAdapter
@@ -20,14 +20,25 @@ namespace Dfm.Web.Code
             this.root = root;
         }
 
-        public List<TreeModel<bool>> GetChilds()
+        public List<TreeModel<bool>> GetChilds(bool all = false)
         {
-            return model.Folders.Select(s => new TreeModel<bool>
+            var dat = new List<TreeModel<bool>>();
+            dat.AddRange(model.Folders.Select(s => new TreeModel<bool>
             {
                 Id = s.FullPath.Replace(root, string.Empty),
                 Text = s.Name,
                 Children = s.Folders.Any()
-            }).ToList();
+            }));
+
+            if (all)
+                dat.AddRange(model.Files.Select(s => new TreeModel<bool>
+                {
+                    Id = s.FullPath.Replace(root, string.Empty),
+                    Text = s.Name,
+                    Type = "file"
+                }));
+
+            return dat;
         }
 
         public TreeModel<List<TreeModel<bool>>>[] GetRoot()

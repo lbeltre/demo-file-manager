@@ -5,6 +5,7 @@
         public string Id { get; set; }
         public string Text { get; set; }
         public string Icon { get; set; }
+        public string Type { get; set; }
         public T Children { get; set; }
         public State State { get; set; }
     }
