@@ -27,6 +27,7 @@ namespace Dfm.Web.Code
             {
                 Id = s.FullPath.Replace(root, string.Empty),
                 Text = s.Name,
+                UniqueIdentifier = GetChildIdentifier(model.Created, model.Name, s.Name),
                 Children = s.Folders.Any()
             }));
 
@@ -35,7 +36,8 @@ namespace Dfm.Web.Code
                 {
                     Id = s.FullPath.Replace(root, string.Empty),
                     Text = s.Name,
-                    Type = "file"
+                    Type = "file",
+                    UniqueIdentifier = GetChildIdentifier(model.Created, model.Name, s.Name)
                 }));
 
             return dat;
@@ -46,16 +48,22 @@ namespace Dfm.Web.Code
             return new TreeModel<List<TreeModel<bool>>>[] {
                 new TreeModel<List<TreeModel<bool>>>
                 {
-                        Id = String.Empty,
+                        Id = string.Empty,
                         Text = model.Name,
+                        UniqueIdentifier = GetChildIdentifier(model.Created, model.Name),
                         State = new State
                         {
                             Opened = true,
                             Disabled = true
                         },
-                        Children = TreeViewModel.Transform(model.Folders, root)
+                        Children = GetChilds()
                     }
                 };
+        }
+
+        private string GetChildIdentifier(DateTime date, params string[] names)
+        {
+            return $"{string.Join(string.Empty, names.Select(s => s.Replace(" ", "_")))}_{date.Ticks}";
         }
     }
 }

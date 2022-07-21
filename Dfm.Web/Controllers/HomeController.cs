@@ -74,7 +74,6 @@ namespace Dfm.Web.Controllers
         //TODO
         /*
          * get only txt
-         * implement crud txt in core
          * implement crud UI         
          */
     }

@@ -8,6 +8,7 @@
         public string Type { get; set; }
         public T Children { get; set; }
         public State State { get; set; }
+        public string UniqueIdentifier { get; set; }
     }
 
     public class State

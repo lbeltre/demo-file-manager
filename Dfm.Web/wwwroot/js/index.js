@@ -12,7 +12,7 @@ $(function () {
         }
     }).bind("select_node.jstree", function (event, selected) {
         showContent(selected.node);
-        updateBreadcrump(selected.node);        
+        updateBreadcrump(selected.node);
     }).bind("loaded.jstree", function (event, selected) {
         var node = {
             id: "#",
@@ -20,8 +20,9 @@ $(function () {
         };
 
         showContent(node);
-        updateBreadcrump(node);    
+        updateBreadcrump(node);
     });
+
 });
 
 function showContent(node) {
@@ -29,7 +30,7 @@ function showContent(node) {
 
     $.get("/home/getcontent", { id: node.id }, function (resp) {
         $.each(resp, function (key, val) {
-            if (val.type !== "file") {                
+            if (val.type !== "file") {
                 val.type = "folder";
             }
 
@@ -39,11 +40,11 @@ function showContent(node) {
 }
 
 function elementContent(arg) {
-    return '<li class="col mb-4" data-tags="' + arg.type +'" data-categories="files and folders">'
+    return '<li class="col mb-4 elem-content" onclick="onSelectedContent(this)" data-tags="' + arg.type + '" data-categories="files and folders" id="' + arg.uniqueIdentifier + '" >'
         + '<a class="d-block text-dark text-decoration-none" href="#">'
         + '<div class=text-center rounded">'
-        + '<img src="/img/' + arg.type + '-96.png" alt="' + arg.type +'" /></div>'
-        + '<div class="name text-muted text-decoration-none text-center pt-1">'+ arg.text +'</div>'
+        + '<img src="/img/' + arg.type + '-96.png" alt="' + arg.type + '" /></div>'
+        + '<div class="name text-muted text-decoration-none text-center pt-1">' + arg.text + '</div>'
         + '</a></li>';
 }
 
@@ -55,10 +56,15 @@ function updateBreadcrump(node) {
         var text = val == "" || val == "#" ? "Home" : val
 
         if (node.text === val) {
-            $("#bread-crumb").append('<li class="breadcrumb-item active" aria-current="page">' + text +'</li>');
+            $("#bread-crumb").append('<li class="breadcrumb-item active" aria-current="page">' + text + '</li>');
         } else {
-            $("#bread-crumb").append('<li class="breadcrumb-item" style="color:#0d6efd">' + text +'</li>');
+            $("#bread-crumb").append('<li class="breadcrumb-item" style="color:#0d6efd">' + text + '</li>');
         }
     });
+}
+
+function onSelectedContent(arg) {
+    $(".elem-content").removeClass("item-selectd");
+    $(arg).addClass("item-selectd");
 }
 
