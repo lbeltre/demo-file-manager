@@ -14,23 +14,22 @@
     <div class="card-body">
         <div class="row">
             <div class="col">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">page</li>
+                <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                    <ol class="breadcrumb" id="bread-crumb">
+                        @*content-breadcrumb*@
                     </ol>
                 </nav>
                 <hr />
             </div>
         </div>
-        
+
         <div class="row">
             <div class="col-3" style="border-right: 0.5px solid;">
-                <div id="treePath" ></div>
+                <div id="treePath"></div>
             </div>
             <div class="col">
                 <ul class="row row-cols-3 row-cols-sm-4 row-cols-lg-6 row-cols-xl-8 list-unstyled list" id="show-content">
-                    @*content - nodes                    *@
+                    @*content-nodes*@
                 </ul>
             </div>
         </div>
@@ -38,5 +37,5 @@
 </div>
 
 @section Scripts{
-    <script type="text/javascript" src="~/js/index.js"></script>
+    <script type="text/javascript" src="~/js/index.js" asp-append-version="true"></script>
 }
